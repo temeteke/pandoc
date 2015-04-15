@@ -1,0 +1,17 @@
+#!/bin/sh
+
+args() {
+	while [ "$1" != "" ]; do
+		case $1 in
+			-*)
+				echo "$1"
+				;;
+			*)
+				echo $(cygpath -w "$1")
+				;;
+		esac
+		shift
+	done
+}
+
+$(cygpath $LOCALAPPDATA\\Pandoc\\pandoc.exe) $(args $@)

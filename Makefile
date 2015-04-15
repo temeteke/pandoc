@@ -12,11 +12,13 @@ clean:
 
 install: $(FILES) $(DIR)
 	cp $(FILES) $(DIR)/
+	which cygpath > /dev/null && cp bin/pandoc ~/bin/ || echo "cygpath is not found."
 
 $(DIR):
 	mkdir $@
 		
 uninstall:
 	rm $(addprefix $(DIR)/, $(FILES))
+	rm -f ~/bin/pandoc
 
 FORCE:
